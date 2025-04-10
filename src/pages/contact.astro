@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Contact" sideBarActiveItemID="contact">
+  <section class="mb-12">
+    <h2 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-teal-400 to-blue-600 mb-4 flex items-center gap-2">
+      📧 Contact Me
+    </h2>
+    <p class="text-lg text-gray-700 leading-relaxed mb-8">
+      I'd love to hear from you! Whether you have a question, a project idea, or just want to say hi — feel free to send me a message.
+    </p>
+
+    <!-- 🧩 Responsive Grid Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- ✅ Contact Animation -->
+      <div class="flex justify-center lg:justify-end animate-slide-up">
+        <lottie-player
+          src="https://assets3.lottiefiles.com/packages/lf20_tno6cg2w.json"
+
+          background="transparent"
+          speed="1"
+          style="width: 100%; max-width: 400px; height: auto"
+          loop
+          autoplay
+        ></lottie-player>
+      </div>
+
+      <!-- ✅ Contact Form ✅ -->
+<form
+  action="https://formsubmit.co/bassel.alawidat.ai@gmail.com"
+  method="POST"
+  class="bg-base-200 p-8 rounded-2xl shadow-xl animate-fade-in border border-teal-300"
+>
+  <!-- إيميل بديل للسبام -->
+  <input type="hidden" name="_captcha" value="false" />
+
+  <input type="hidden" name="_next" value="https://math-ai-wheat.vercel.app/thank-you" />
+
+  <div class="mb-4">
+    <label for="name" class="label font-semibold text-teal-600">
+      <span class="label-text">Name</span>
+    </label>
+    <input type="text" id="name" name="name" class="input input-bordered w-full" required />
+  </div>
+
+  <div class="mb-4">
+    <label for="email" class="label font-semibold text-teal-600">
+      <span class="label-text">Email</span>
+    </label>
+    <input type="email" id="email" name="email" class="input input-bordered w-full" required />
+  </div>
+
+  <div class="mb-4">
+    <label for="message" class="label font-semibold text-teal-600">
+      <span class="label-text">Message</span>
+    </label>
+    <textarea id="message" name="message" rows="5" class="textarea textarea-bordered w-full" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-full mt-4 hover:shadow-lg transition hover:scale-[1.02]">
+    ✉️ Send Message
+  </button>
+</form>
+
+  <!-- ✅ Submit alert only -->
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("✅ Message sent (demo only)");
+      });
+    });
+  </script>
+</BaseLayout>

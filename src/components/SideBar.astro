@@ -1,0 +1,58 @@
+---
+import SideBarFooter from "./SideBarFooter.astro";
+import { Image } from "astro:assets";
+import SideBarMenu from "./SideBarMenu.astro";
+const { sideBarActiveItemID } = Astro.props;
+---
+
+<div class="drawer-side z-40">
+  <label for="my-drawer" class="drawer-overlay"></label>
+  <aside class="px-4 pt-4 h-auto min-h-full w-[20rem] bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 text-white shadow-2xl rounded-r-3xl backdrop-blur-md bg-opacity-80 flex flex-col">
+
+    <!-- الصورة الشخصية -->
+    <div class="w-fit mx-auto mt-6 mb-8">
+      <a href="/" class="group">
+        <div class="avatar transition-transform duration-500 ease-in-out group-hover:scale-110 group-hover:rotate-6 drop-shadow-xl">
+          <div class="w-[9rem] rounded-full ring ring-white ring-offset-4 ring-offset-base-100 shadow-[0_0_20px_rgba(0,255,255,0.6)] relative overflow-hidden">
+            <Image
+              class="rounded-full transition-all duration-500 group-hover:scale-110 group-hover:rotate-[10deg] group-hover:shadow-[0_0_25px_rgba(0,255,255,0.9)]"
+              format="webp"
+              width={300}
+              height={300}
+              src="/profile.JPG"
+              alt="Profile image"
+            />
+            <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 animate-pulse"></div>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!-- القائمة -->
+    <div class="flex-1">
+      <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+    </div>
+
+    <!-- الفوتر -->
+    <div class="mt-auto mb-4">
+      <SideBarFooter />
+    </div>
+  </aside>
+</div>
+
+<style>
+/* تحسين تصميم العناصر الجانبية */
+.menu a {
+  transition: all 0.3s ease;
+  border-radius: 0.5rem;
+  padding-left: 1rem;
+}
+
+.menu a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffeb3b;
+  padding-left: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+</style>

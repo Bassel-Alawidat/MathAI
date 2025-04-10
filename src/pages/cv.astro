@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <!-- Profile Section -->
+  <section class="mb-12">
+    <h2 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-teal-400 to-blue-600 mb-4 flex items-center gap-2">
+      👤 Profile
+    </h2>
+    <p class="text-lg text-gray-800 leading-relaxed">
+      <b class="text-teal-600">Computer Engineer</b> and Educator Specializing in <b class="text-teal-600">Data Analysis</b>,
+      with over 4 years of experience in teaching <b>mathematics and computer science</b>.
+      Currently working as a Mathematics and YÖS instructor at Gaziantep Private School,
+      while also engaged in remote biomedical data analysis.
+    </p>
+  </section>
+
+  <!-- Education Section -->
+  <section class="mb-12">
+    <h2 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-purple-500 to-blue-500 mb-4 flex items-center gap-2">
+      🎓 Education
+    </h2>
+    <div class="grid gap-6">
+      <TimeLineElement title="Bachelor's in Computer Engineering" subtitle="2020 - 2024 | Kırıkkale University, Turkey" gpa="GPA: 3.25" />
+      <TimeLineElement title="High School" subtitle="2014 - 2018 | Munif Pasha High School, Gaziantep, Turkey" gpa="GPA: 98.32" />
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="mb-12">
+    <h2 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-pink-500 to-purple-500 mb-4 flex items-center gap-2">
+      💼 Experience
+    </h2>
+    <div class="grid gap-6">
+      <TimeLineElement title="Mathematics & CS Instructor" subtitle="2024 - Present | Gaziantep Private School">
+        Teaching Mathematics and YÖS to high school students using flexible, personalized lesson plans.
+      </TimeLineElement>
+      <TimeLineElement title="Biomedical Data Analyst" subtitle="2022 - Present (Remote) | Venna, Austria">
+        Analyzing medical datasets with Python & Pandas. Developing AI-driven interpretations of medical results.
+      </TimeLineElement>
+      <TimeLineElement title="Software Development Intern" subtitle="Oct - Dec 2023 | Rikaz, Sanliurfa">
+        Built a weather data mobile app using Java & Jsoup.
+      </TimeLineElement>
+      <TimeLineElement title="Backend Development Intern" subtitle="Jul - Sep 2023 | SmartINB, Gaziantep">
+        Developed backend systems using Python and Django framework.
+      </TimeLineElement>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="mb-12">
+    <h2 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-green-400 to-yellow-500 mb-4 flex items-center gap-2">
+      📜 Certifications
+    </h2>
+    <ul class="grid gap-2 list-disc ml-6 text-blue-700">
+      <li>
+        <a href="http://dogrulama.kku.edu.tr/envision.sorgula/belgedogrulama.aspx?" target="_blank" class="hover:text-blue-500 transition duration-300">
+          Bachelor Degree
+        </a>
+      </li>
+      <li>
+        <a href="http://dogrulama.kku.edu.tr/envision.sorgula/belgedogrulama.aspx?" target="_blank" class="hover:text-blue-500 transition duration-300">
+          Honor Certificate
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="mb-12">
+    <h2 class="text-4xl font-extrabold text-gradient bg-gradient-to-r from-yellow-400 to-pink-500 mb-6 flex items-center gap-2">
+      🧠 Skills
+    </h2>
+    <div class="flex flex-wrap gap-3">
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">Algorithms</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">Artificial Intelligence</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">Data Structures</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">Mathematics</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">SQL & SQL Server</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">Numpy and Pandas</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">Machine & Deep Learning</span>
+      <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-semibold">C/C++, C# and Java</span>
+    </div>
+  </section>
+</BaseLayout>

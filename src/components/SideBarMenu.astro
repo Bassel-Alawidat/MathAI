@@ -1,0 +1,55 @@
+---
+const { sideBarActiveItemID } = Astro.props;
+const activeClass = "active bg-gradient-to-r from-teal-500 to-blue-500 text-white shadow-md rounded-lg";
+---
+
+<ul class="menu grow shrink menu-md overflow-y-auto px-3 py-4 space-y-2 text-base">
+  <li>
+    <a id="home" href="/" class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200">
+      🏠 <span>Home</span>
+    </a>
+  </li>
+  <li>
+    <a id="projects" href="/projects" class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200">
+      💼 <span>Projects</span>
+    </a>
+  </li>
+  <li>
+    <a id="services" href="/services" class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200">
+      🛠️ <span>Services</span>
+    </a>
+  </li>
+  <li>
+    <a id="store" href="/store" class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200">
+      🛍️ <span>Store</span>
+    </a>
+  </li>
+  <li>
+    <a id="blog" href="/blog/" class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200">
+      ✍️ <span>Blog</span>
+    </a>
+  </li>
+  <li>
+    <a id="cv" href="/cv" class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200">
+      📄 <span>CV</span>
+    </a>
+  </li>
+  <li>
+    <a
+      id="contact"
+      href="mailto:contact.bassel.alawidat.98@gmail.com"
+      target="_blank"
+      class="sidebar-indicator flex items-center gap-3 px-4 py-3 transition-all duration-200 rounded-lg hover:bg-base-200"
+      referrerpolicy="no-referrer-when-downgrade"
+    >
+      📧 <span>Contact</span>
+    </a>
+  </li>
+</ul>
+
+<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
+const activeItemElem = document.getElementById(sideBarActiveItemID);
+if (activeItemElem) {
+  activeItemElem.classList.add(...activeClass.split(" "));
+}
+</script>

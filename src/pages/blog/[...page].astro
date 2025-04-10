@@ -1,87 +1,115 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import HorizontalCard from "../../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../../lib/createSlug"
+import createSlug from "../../lib/createSlug";
 
 export async function getStaticPaths({ paginate }) {
   const posts = await getCollection("blog");
   posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-  return paginate(posts, { pageSize: 10 });
+  return paginate(posts, { pageSize: 9 });
 }
 
 const { page } = Astro.props;
 ---
 
 <BaseLayout title="Blog" sideBarActiveItemID="blog">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Blog</div>
-  </div>
+  <section class="py-16 px-6 bg-gradient-to-b from-white to-gray-50">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 animate-fade-in">
+        Welcome to My Blog
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-16 animate-fade-in delay-150">
+        Dive into articles about technology, computer science, artificial intelligence, and the wonders of mathematics.
+      </p>
+    </div>
 
-  {
-    page.data.length === 0 ? (
-      <div class="bg-base-200 border-l-4 border-secondary w-full p-4 min-w-full">
-        <p class="font-bold">Sorry!</p>
-        <p>There are no blog posts to show at the moment. Check back later!</p>
-      </div>
-    ) : (
-      <ul>
-        {page.data.map((post) => (
-          <>
-            <HorizontalCard
-              title={post.data.title}
-              img={post.data.heroImage}
-              desc={post.data.description}
-              url={"/blog/" + createSlug(post.data.title, post.slug)}
-              target="_self"
-              badge={post.data.badge}
-              tags={post.data.tags}
-            />
-            <div class="divider my-0" />
-          </>
-        ))}
-      </ul>
-    )
-  }
+    <!-- Filter tags section -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" id="tag-filters">
+      <button data-tag="all" class="tag-btn px-4 py-2 bg-teal-100 text-teal-700 rounded-full font-medium hover:bg-teal-200 transition">All</button>
+      <button data-tag="AI" class="tag-btn px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium hover:bg-blue-200 transition">AI</button>
+      <button data-tag="Math" class="tag-btn px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-medium hover:bg-purple-200 transition">Math</button>
+      <button data-tag="CS" class="tag-btn px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full font-medium hover:bg-emerald-200 transition">CS</button>
+      <button data-tag="Tech" class="tag-btn px-4 py-2 bg-rose-100 text-rose-700 rounded-full font-medium hover:bg-rose-200 transition">Tech</button>
+    </div>
 
-  <div class="flex justify-between">
-    {
-      page.url.prev ? (
-        <a href={page.url.prev} class="btn btn-ghost my-10 mx-5">
-          {" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-          </svg>{" "}
-          Recent posts
-        </a>
-      ) : (
-        <div />
-      )
+    <div id="posts-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      {page.data.map((post) => {
+        const slug = "/blog/" + createSlug(post.data.title, post.slug);
+        return (
+          <a href={slug} class="group block bg-white rounded-3xl border border-gray-200 shadow-md overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 opacity-0 transform scale-95 animate-fade-post" data-tags={post.data.tags?.join(',')}>
+            <div class="h-52 w-full overflow-hidden">
+              <img src={post.data.heroImage} alt={post.data.title} class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" />
+            </div>
+            <div class="p-6 text-left">
+              <h2 class="text-2xl font-bold mb-3 text-gray-800 group-hover:text-teal-600 transition-colors duration-300">
+                {post.data.title}
+              </h2>
+              <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                {post.data.description}
+              </p>
+              <div class="flex flex-wrap gap-2">
+                {post.data.tags?.map(tag => (
+                  <span class="bg-gray-100 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full border border-gray-300">
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="flex justify-between items-center mt-20">
+      {
+        page.url.prev ? (
+          <a href={page.url.prev} class="btn btn-outline btn-primary transition hover:scale-105">
+            ← Recent posts
+          </a>
+        ) : <div />
+      }
+      {
+        page.url.next ? (
+          <a href={page.url.next} class="btn btn-outline btn-primary transition hover:scale-105">
+            Older posts →
+          </a>
+        ) : <div />
+      }
+    </div>
+  </section>
+
+  <style is:inline>
+    @keyframes fadeInPost {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
-    {
-      page.url.next ? (
-        <a href={page.url.next} class="btn btn-ghost my-10 mx-5">
-          Older Posts{" "}
-          <svg
-            class="h-6 w-6 fill-current md:h-8 md:w-8"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            {" "}
-            <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-          </svg>
-        </a>
-      ) : (
-        <div />
-      )
+    .animate-fade-post {
+      animation: fadeInPost 0.6s ease-out forwards;
     }
-  </div>
+  </style>
+
+  <script is:inline>
+    const buttons = document.querySelectorAll(".tag-btn");
+    const cards = document.querySelectorAll("[data-tags]");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const selected = btn.getAttribute("data-tag").toLowerCase();
+
+        buttons.forEach(b => b.classList.remove("ring", "ring-offset-2", "ring-teal-400"));
+        btn.classList.add("ring", "ring-offset-2", "ring-teal-400");
+
+        cards.forEach(card => {
+          const tags = card.getAttribute("data-tags")?.toLowerCase() || "";
+          if (selected === "all" || tags.includes(selected)) {
+            card.classList.remove("hidden");
+            card.classList.add("animate-fade-post");
+          } else {
+            card.classList.add("hidden");
+            card.classList.remove("animate-fade-post");
+          }
+        });
+      });
+    });
+  </script>
 </BaseLayout>

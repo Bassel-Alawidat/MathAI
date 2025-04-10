@@ -2,7 +2,7 @@
 import { CollectionEntry, getCollection } from "astro:content";
 import { BlogSchema } from "../../content/config";
 import PostLayout from "../../layouts/PostLayout.astro";
-import createSlug from "../../lib/createSlug"
+import createSlug from "../../lib/createSlug";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("blog");
@@ -19,6 +19,13 @@ interface Props {
 const { entry } = Astro.props;
 const post: BlogSchema = entry.data;
 const { Content } = await entry.render();
+
+const allPosts = await getCollection("blog");
+allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const currentIndex = allPosts.findIndex(p => p.slug === entry.slug);
+const prevPost = allPosts[currentIndex + 1];
+const nextPost = allPosts[currentIndex - 1];
 ---
 
 <PostLayout
@@ -30,5 +37,67 @@ const { Content } = await entry.render();
   badge={post.badge}
   tags={post.tags}
 >
-  <Content />
+  <article class="relative max-w-5xl mx-auto px-6 py-12 bg-white shadow-2xl rounded-3xl border border-gray-100 transition duration-300 hover:shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
+    <div class="absolute inset-0 bg-gradient-to-br from-teal-100 via-white to-indigo-100 opacity-30 rounded-3xl pointer-events-none"></div>
+    <div class="relative z-10 prose lg:prose-xl prose-indigo">
+      <Content />
+    </div>
+  </article>
+  <!-- روابط المقال السابق والتالي -->
+<div slot="footer-nav" class="flex flex-col sm:flex-row justify-between items-center gap-6 mt-16 px-2 sm:px-0">
+
+  {prevPost ? (
+    <a
+      href={`/blog/${createSlug(prevPost.data.title, prevPost.slug)}`}
+      class="group flex items-center max-w-xl w-full bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 hover:bg-indigo-50"
+    >
+      <!-- الصورة -->
+      <div class="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden border-4 border-white shadow-lg ring-2 ring-indigo-300 group-hover:ring-indigo-400 transition-all duration-300">
+        <img
+          src={prevPost.data.heroImage}
+          alt={prevPost.data.title}
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-300"
+        />
+      </div>
+
+      <!-- النص -->
+      <div class="ml-4 flex-grow">
+        <p class="text-sm text-gray-500 mb-1">Prev Blog</p>
+        <p class="font-bold text-gray-800 text-lg leading-snug group-hover:text-indigo-700 line-clamp-2">
+          {prevPost.data.title}
+        </p>
+      </div>
+
+      <!-- السهم -->
+      <div class="text-indigo-500 text-2xl ml-3 group-hover:-translate-x-1 transition">←</div>
+    </a>
+  ) : <div class="w-full max-w-xl" />}
+  
+  {nextPost ? (
+    <a
+      href={`/blog/${createSlug(nextPost.data.title, nextPost.slug)}`}
+      class="group flex items-center justify-end max-w-xl w-full bg-white border border-gray-200 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-4 hover:bg-indigo-50 text-right"
+    >
+      <!-- السهم -->
+      <div class="text-indigo-500 text-2xl mr-3 group-hover:translate-x-1 transition">→</div>
+
+      <!-- النص -->
+      <div class="mr-4 flex-grow">
+        <p class="text-sm text-gray-500 mb-1">Next Blog</p>
+        <p class="font-bold text-gray-800 text-lg leading-snug group-hover:text-indigo-700 line-clamp-2">
+          {nextPost.data.title}
+        </p>
+      </div>
+
+      <!-- الصورة -->
+      <div class="w-20 h-20 flex-shrink-0 rounded-full overflow-hidden border-4 border-white shadow-lg ring-2 ring-indigo-300 group-hover:ring-indigo-400 transition-all duration-300">
+        <img
+          src={nextPost.data.heroImage}
+          alt={nextPost.data.title}
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-300"
+        />
+      </div>
+    </a>
+  ) : <div class="w-full max-w-xl" />}
+</div>
 </PostLayout>

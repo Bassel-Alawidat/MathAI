@@ -2,9 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug"
+import createSlug from "../lib/createSlug";
 
-const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
 
 const last_posts = posts.slice(0, 3);
 ---
@@ -12,23 +14,37 @@ const last_posts = posts.slice(0, 3);
 <BaseLayout sideBarActiveItemID="home">
   <div class="pb-12 mt-5">
     <div class="text-xl py-1 animate-fade-in">Hey there 👋</div>
-    <div class="text-5xl font-bold text-gradient animate-slide-up ...">I'm Bassel Alawidat</div>
-    <div class="text-3xl py-3 font-bold">Computer Engineer and AI Expert</div>
+    <div class="text-5xl font-bold text-gradient animate-slide-up ...">
+      I'm Bassel Alawidat
+    </div>
+    <div class="text-3xl py-3 font-bold">
+      Computer Engineer and Software Developer
+    </div>
     <div class="py-2">
       <text class="text-lg">
         <b>Computer Engineer</b> and Educator Specializing in Data Analysis and AI.
       </text>
     </div>
     <div class="mt-8">
-      <a class="btn rounded-full shadow-md hover:shadow-lg transition-all duration-300" href="https://www.facebook.com/BasilAlewaidat/" target="_blank">Let's connect!</a>
-      <a href="https://github.com/Bassel-Alawidat" target="_blank" class="btn btn-outline ml-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300">
+      <a
+        class="btn rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+        href="https://wa.me/905348533610"
+        target="_blank">Let's connect!</a
+      >
+      <a
+        href="https://github.com/Bassel-Alawidat"
+        target="_blank"
+        class="btn btn-outline ml-5 rounded-full shadow-md hover:shadow-lg transition-all duration-300"
+      >
         Get My github
       </a>
     </div>
   </div>
 
   <div>
-    <div class="text-3xl w-full font-bold mb-2 mt-10 md:text-4xl sm:text-2xl">My Last Projects {"</>"}</div>
+    <div class="text-3xl w-full font-bold mb-2 mt-10 md:text-4xl sm:text-2xl">
+      My Last Projects {"</>"}
+    </div>
   </div>
 
   <HorizontalCard
@@ -40,7 +56,7 @@ const last_posts = posts.slice(0, 3);
     class="transform hover:scale-105 transition-all duration-500"
   />
   <div class="divider border-t-2 border-primary my-4"></div>
-  
+
   <HorizontalCard
     title="E-Commerce Website (Built with Django) 🛒"
     img="/e-commerce.jpg"
@@ -60,7 +76,9 @@ const last_posts = posts.slice(0, 3);
   />
 
   <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10 md:text-4xl sm:text-2xl">Latest from Blog</div>
+    <div class="text-3xl w-full font-bold mb-5 mt-10 md:text-4xl sm:text-2xl">
+      Latest from Blog
+    </div>
   </div>
 
   {

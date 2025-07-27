@@ -81,3 +81,22 @@ Studying computer science teaches more than just how to code — it teaches you 
 In a world driven by technology, understanding how things work behind the scenes is not just valuable — it's **empowering**.
 
 **Code is the language of the future — and the future is already here.**
+
+</div>
+<div dir="rtl" style="text-align: right; margin-top: 2rem; font-size: 1.1rem; display: flex; flex-direction: row; gap: 1.5rem; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+
+<a href="https://wa.me/0905348533610" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" width="20" style="margin-left: 8px;" />
+  whatsapp
+</a>
+
+<a href="https://www.linkedin.com/in/bassel-alawidat-8b2292374/" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="20" style="margin-left: 8px;" />
+  Linkedin
+</a>
+
+<a href="https://github.com/Bassel-Alawidat" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" width="20" style="margin-left: 8px;" />
+  GitHub
+</a>
+</div>

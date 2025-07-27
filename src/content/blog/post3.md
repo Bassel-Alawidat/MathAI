@@ -83,3 +83,21 @@ So if you’re ready to challenge yourself, dive deep into data, and help shape 
 
 **The future isn’t written yet — but with AI, you could be the one writing it.**
 
+</div>
+<div dir="rtl" style="text-align: right; margin-top: 2rem; font-size: 1.1rem; display: flex; flex-direction: row; gap: 1.5rem; justify-content: flex-end; align-items: center; flex-wrap: wrap;">
+
+<a href="https://wa.me/0905348533610" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg" alt="WhatsApp" width="20" style="margin-left: 8px;" />
+  whatsapp
+</a>
+
+<a href="https://www.linkedin.com/in/bassel-alawidat-8b2292374/" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" width="20" style="margin-left: 8px;" />
+  Linkedin
+</a>
+
+<a href="https://github.com/Bassel-Alawidat" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+  <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" width="20" style="margin-left: 8px;" />
+  GitHub
+</a>
+</div>

@@ -24,6 +24,30 @@ const isHome = Astro.url.pathname === "/";
     <BaseHead title={title} description={description} image={image} ogType={ogType} />
     {TRANSITION_API && <ViewTransitions />}
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body);"
+      data-mathml="true"
+      data-delimiters='[{"left":"$$","right":"$$","display":true},{"left":"$","right":"$","display":false}]'>
+    </script>
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" />
+
+    <!-- KaTeX auto-render -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+      onload="renderMathInElement(document.body);"
+      data-mathml="true"
+      data-delimiters='[
+        {"left":"$$","right":"$$","display":true},
+        {"left":"$","right":"$","display":false}
+      ]'>
+    </script>
+
+   
+
+
 
   </head>
   <body style="position: relative; z-index: 0">
